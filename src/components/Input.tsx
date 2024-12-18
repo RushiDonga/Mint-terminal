@@ -51,7 +51,6 @@ const Input = ({
   const [suggest, setSuggest] = useState<string>("");
   const [disableInput, setDisableInput] = useState<boolean>(false);
   const [autoSuggest, setAutoSuggest] = useState<string>("");
-  const histMap: string[] = [];
   const tabComplete = (inputCmd: string) => {
     // check if allCommands contains inputCmd
     const arr = allCommands.filter((item) => item === inputCmd);
@@ -84,8 +83,8 @@ const Input = ({
         return <Projects />;
       case "date":
         return new Date().toUTCString();
-      // case "" || undefined:
-      //   return <> </>;
+      case undefined:
+        return <> </>;
       case "help":
         return <Suggestion />;
       case "repo":
